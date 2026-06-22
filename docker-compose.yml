@@ -106,3 +106,26 @@ services:
     # devices:
     #   - /dev/dri:/dev/dri
     restart: unless-stopped
+
+  autoheal:
+    image: willfarrell/autoheal:latest
+    container_name: autoheal
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+      - AUTOHEAL_INTERVAL=15
+      - TZ=${TZ}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+  notifier:
+    image: alpine:3.21
+    container_name: notifier
+    environment:
+      - NTFY_TOPIC=${NTFY_TOPIC}
+      - TZ=${TZ}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./scripts/notifier.sh:/notifier.sh:ro
+    command: sh /notifier.sh
+    restart: unless-stopped
