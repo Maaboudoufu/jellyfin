@@ -11,7 +11,7 @@ services:
       - 6881:6881        # torrent port
       - 6881:6881/udp
     volumes:
-      - ${DATA_ROOT}/config/gluetun:/gluetun
+      - ./config/gluetun:/gluetun
     environment:
       - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
       - VPN_TYPE=${VPN_TYPE}
@@ -33,7 +33,7 @@ services:
       - TZ=${TZ}
       - WEBUI_PORT=8080
     volumes:
-      - ${DATA_ROOT}/config/qbittorrent:/config
+      - ./config/qbittorrent:/config
       - ${DATA_ROOT}/data:/data
     healthcheck:
       test: ["CMD-SHELL", "curl --fail http://localhost:8080 || exit 1"]
@@ -54,7 +54,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ${DATA_ROOT}/config/prowlarr:/config
+      - ./config/prowlarr:/config
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -67,7 +67,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ${DATA_ROOT}/config/sonarr:/config
+      - ./config/sonarr:/config
       - ${DATA_ROOT}/data:/data
     ports:
       - 8989:8989
@@ -81,7 +81,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ${DATA_ROOT}/config/radarr:/config
+      - ./config/radarr:/config
       - ${DATA_ROOT}/data:/data
     ports:
       - 7878:7878
@@ -95,7 +95,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ${DATA_ROOT}/config/jellyfin:/config
+      - ./config/jellyfin:/config
       - ${DATA_ROOT}/data/media:/data/media
     ports:
       - 8096:8096

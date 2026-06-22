@@ -9,3 +9,6 @@ data/
 .vscode/
 *.swp
 .DS_Store
+
+# Local backups (e.g. docker-compose.yml.bak.<timestamp>)
+*.bak*
