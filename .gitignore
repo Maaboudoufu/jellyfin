@@ -1,0 +1,6 @@
+# Secrets
+.env
+
+# Runtime data — app state and media (huge, machine-specific)
+config/
+data/
