@@ -26,6 +26,22 @@ jellyfin/
    ```
 4. **Get qBittorrent temp password:** `docker logs qbittorrent | grep -i password`
 
+### NordVPN WireGuard key
+
+The Manual Setup page only shows OpenVPN credentials. To get the WireGuard key:
+
+1. Generate an access token at [my.nordaccount.com/dashboard/nordvpn/access-tokens](https://my.nordaccount.com/dashboard/nordvpn/access-tokens/).
+2. Extract the key:
+   ```bash
+   curl -s -u token:YOUR_ACCESS_TOKEN https://api.nordvpn.com/v1/users/services/credentials \
+     | jq -r .nordlynx_private_key
+   ```
+   No `jq`? Swap the pipe for:
+   ```bash
+   | python -c "import sys,json;print(json.load(sys.stdin)['nordlynx_private_key'])"
+   ```
+3. Revoke the access token after use.
+
 ## Configure (in this order)
 
 | App | URL | What to do |
