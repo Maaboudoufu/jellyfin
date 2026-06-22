@@ -18,7 +18,7 @@ jellyfin/
 
 ## Setup
 
-1. **Edit `.env`** — fill in your VPN's `WIREGUARD_PRIVATE_KEY` and `WIREGUARD_ADDRESSES`. Adjust `TZ`, `SERVER_COUNTRIES`, `LAN_SUBNET` if needed.
+1. **Copy `.env.example` to `.env`** and fill in your VPN's `WIREGUARD_PRIVATE_KEY` and `WIREGUARD_ADDRESSES`. Adjust `TZ`, `SERVER_COUNTRIES`, `LAN_SUBNET` if needed.
 2. **Start:** `docker compose up -d`
 3. **Verify VPN** (must show VPN IP, not your home IP):
    ```bash
