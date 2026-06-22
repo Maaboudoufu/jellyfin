@@ -102,7 +102,7 @@ services:
       - 8920:8920
       - 7359:7359/udp
       - 1900:1900/udp
-    # Hardware transcoding (Intel/AMD iGPU) — uncomment if you have one:
+    # TODO: enable VAAPI hardware transcoding
     # devices:
     #   - /dev/dri:/dev/dri
     restart: unless-stopped
