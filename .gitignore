@@ -4,3 +4,8 @@
 # Runtime data — app state and media (huge, machine-specific)
 config/
 data/
+
+# editor cruft
+.vscode/
+*.swp
+.DS_Store
