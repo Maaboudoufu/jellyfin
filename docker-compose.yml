@@ -129,3 +129,11 @@ services:
       - ./scripts/notifier.sh:/notifier.sh:ro
     command: sh /notifier.sh
     restart: unless-stopped
+
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=info
+      - TZ=${TZ}
+    restart: unless-stopped
