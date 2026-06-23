@@ -1,6 +1,6 @@
 # Media Server
 
-Docker Compose stack: **Jellyfin** streams, **Sonarr/Radarr** automate, **Prowlarr** finds (via **FlareSolverr** for Cloudflare-protected indexers), **qBittorrent** downloads (through **Gluetun** VPN). **autoheal** restarts anything unhealthy; a small **notifier** sidecar pushes alerts to your phone via **ntfy.sh**.
+Docker Compose stack: **Jellyfin** streams, **Sonarr/Radarr** automate, **Bazarr** fetches subtitles, **Prowlarr** finds (via **FlareSolverr** for Cloudflare-protected indexers), **qBittorrent** downloads (through **Gluetun** VPN). **autoheal** restarts anything unhealthy; a small **notifier** sidecar pushes alerts to your phone via **ntfy.sh**.
 
 ## Layout
 
@@ -53,6 +53,7 @@ The Manual Setup page only shows OpenVPN credentials. To get the WireGuard key:
 | Prowlarr | `:9696` | **Settings → Indexers → Add Indexer Proxy → FlareSolverr**, host `http://flaresolverr:8191/`, set a tag (e.g. `cf`). Add indexers; tag any Cloudflare-protected ones with `cf`. **Settings → Apps**: add Sonarr (`http://sonarr:8989`) + Radarr (`http://radarr:7878`) with their API keys |
 | Sonarr | `:8989` | **Download Clients** → qBittorrent, host **`gluetun`**, port `8080`. **Root Folder** → `/data/media/tv` |
 | Radarr | `:7878` | Same as Sonarr but root folder → `/data/media/movies` |
+| Bazarr | `:6767` | **Settings → Sonarr/Radarr**: add each with host `sonarr`/`radarr`, their ports, and API keys. **Settings → Languages**: enable your wanted subtitle languages and set a Languages Profile. **Settings → Providers**: add a few (e.g. OpenSubtitles, Subscene) |
 | Jellyfin | `:8096` | First-run wizard. Add libraries from `/data/media/movies` and `/data/media/tv` |
 
 ## The one gotcha
